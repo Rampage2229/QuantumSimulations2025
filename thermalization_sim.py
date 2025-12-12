@@ -5,7 +5,7 @@ from plotly.subplots import make_subplots
 from qutip import *
 
 # --- PAGE CONFIGURATION ---
-st.set_page_config(page_title="Quantum Lab: Numeric", layout="wide", page_icon="🔢")
+st.set_page_config(page_title="Thermalization simulation", layout="wide")
 
 st.markdown("""
 <style>
@@ -153,7 +153,7 @@ def build_animated_figure(times, entropy, spins, density_matrices, density_text,
         # FIX 2: Changed text color to dark gray for better contrast against bright colors
         textfont={"size": 14, "color": "#FFFFFF"}, 
         x=labels, y=labels,
-        colorscale="tealgrn", zmin=0, zmax=0.5, showscale=True # Hide colorbar to focus on numbers
+        colorscale="tealgrn", zmin=0, zmax=1, showscale=False # Hide colorbar to focus on numbers
     ), row=2, col=2)
 
     # --- FRAMES ---
@@ -215,7 +215,6 @@ state_options = [
     "Néel State (↑↓↑↓)", 
     "Domain Wall (↑↑↓↓)", 
     "Single Excitation (↑↓↓↓)", 
-    "Random Product"
 ]
 init_state = st.sidebar.selectbox("Initial State", state_options)
 
@@ -223,7 +222,7 @@ N_spins = st.sidebar.number_input("Number of particles", value = 6)
 disorder = st.sidebar.slider("Disorder (Chaos)", 0.0, 5.0, 0.5)
 interaction = st.sidebar.slider("Interaction Strength", 0.0, 2.0, 1.0)
 
-st.title(" Quantum Lab: The Matrix")
+st.title("Thermalization simulation")
 
 # Run Sim
 times, entropy, spins, dms, dm_text, purities = simulate_and_package_data(
@@ -234,10 +233,10 @@ times, entropy, spins, dms, dm_text, purities = simulate_and_package_data(
 fig = build_animated_figure(times, entropy, spins, dms, dm_text, purities, N_spins)
 st.plotly_chart(fig, use_container_width=True)
 
-# Explanation Placeholder
-st.markdown("---")
-explanation_placeholder = st.empty()
-# You can later use: explanation_placeholder.markdown("Your text here")
 
+#Explanation Placeholder
+#st.markdown("---")
+#explanation_placeholder = st.empty()
+#You can later use: explanation_placeholder.markdown("Your text here")
+#explanation_placeholder.markdown("Example text")
 
-explanation_placeholder.markdown("Alex moral maricon")
