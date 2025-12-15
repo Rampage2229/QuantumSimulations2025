@@ -3,7 +3,7 @@ Simulations done for the quantum physics course presentation on UPC 2025-26 fall
 
 
 ## Requirements
-Python 3.14.0 and libraries on requirements.txt
+Python $\geq$ 3.14.0 and libraries on requirements.txt
 
 You can easily install them by running:
 
